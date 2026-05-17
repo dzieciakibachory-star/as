@@ -1,0 +1,14 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types index.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
