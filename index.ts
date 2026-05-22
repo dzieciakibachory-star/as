@@ -157,8 +157,16 @@ const commands = [
 
 async function registerCommands(clientId: string): Promise<void> {
   const rest = new REST().setToken(TOKEN!);
+
+  console.log("Czyszczenie starych slash commands...");
+  await rest.put(Routes.applicationCommands(clientId), { body: [] });
+  console.log("Stare slash commands wyczyszczone.");
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  console.log("Rejestrowanie nowych slash commands...");
   await rest.put(Routes.applicationCommands(clientId), { body: commands });
-  console.log("Slash commands zarejestrowane globalnie");
+  console.log(`Slash commands zarejestrowane globalnie (${commands.length} komend).`);
 }
 
 // ─── Invite tracking ──────────────────────────────────────────────────────────
